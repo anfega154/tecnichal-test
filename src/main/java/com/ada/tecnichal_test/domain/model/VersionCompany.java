@@ -1,7 +1,6 @@
 package com.ada.tecnichal_test.domain.model;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Version;
 import lombok.Getter;
 import lombok.Setter;
 
