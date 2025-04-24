@@ -20,6 +20,15 @@ public class CompanyService extends BaseService<Company, Long> {
     private final JpaCompanyRepositoryAdapter repository;
 
     /**
+     * Returns the repository for this service.
+     *
+     */
+    @Override
+    protected JpaRepository<Company, Long> getRepository() {
+        return repository.getJpaRepository();
+    }
+
+    /**
      * Constructor for CompanyService.
      *
      * @param repository
@@ -124,10 +133,5 @@ public class CompanyService extends BaseService<Company, Long> {
                         ),
                         map -> new ArrayList<>(map.values())
                 ));
-    }
-
-    @Override
-    protected JpaRepository<Company, Long> getRepository() {
-        return repository.getJpaRepository();
     }
 }
