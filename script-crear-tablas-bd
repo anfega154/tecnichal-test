@@ -1,0 +1,37 @@
+-- Tabla COMPANY
+CREATE TABLE company (
+    id_company SERIAL PRIMARY KEY,
+    codigo_company VARCHAR(50) UNIQUE,
+    name_company VARCHAR(100),
+    description_company VARCHAR(255)
+);
+
+-- Tabla APPLICATION
+CREATE TABLE application (
+    app_id SERIAL PRIMARY KEY,
+    app_code VARCHAR(50) UNIQUE,
+    app_name VARCHAR(100),
+    app_description VARCHAR(255)
+);
+
+-- Tabla VERSION
+CREATE TABLE version (
+    version_id SERIAL PRIMARY KEY,
+    app_id INTEGER,
+    version VARCHAR(50),
+    version_description VARCHAR(255),
+    CONSTRAINT fk_version_app
+        FOREIGN KEY (app_id)
+        REFERENCES application(app_id)
+);
+
+-- Tabla VERSION_COMPANY
+CREATE TABLE version_company (
+    version_company_id SERIAL PRIMARY KEY,
+    company_id INTEGER NOT NULL,
+    version_id INTEGER NOT NULL,
+    version_company_description VARCHAR(255),
+    CONSTRAINT fk_company FOREIGN KEY (company_id) REFERENCES company(id_company),
+    CONSTRAINT fk_version FOREIGN KEY (version_id) REFERENCES version(version_id),
+    CONSTRAINT uq_company_version UNIQUE (company_id, version_id)
+);
