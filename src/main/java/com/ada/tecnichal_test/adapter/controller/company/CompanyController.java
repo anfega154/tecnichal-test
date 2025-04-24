@@ -120,6 +120,12 @@ import java.util.List;
              }
          }
 
+            /**
+            * Retrieves version information for a company and version by its code.
+            *
+            * @param code
+            * @return ResponseEntity
+            */
          @GetMapping("/{code}/versions")
          public Object getCompanyVersionInfo(@PathVariable String code) {
              try {
